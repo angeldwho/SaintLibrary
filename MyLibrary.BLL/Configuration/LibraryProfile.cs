@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MyLibrary.BLL.Models;
 using MyLibrary.DAL.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,9 @@ namespace MyLibrary.BLL.Configuration
     {
         public LibraryProfile()
         {
-            //CreateMap<Author,AuthorModel>();
-            //CreateMap<Book, BookModel>();
-            //CreateMap<Category, CategoryModel>();
+            CreateMap<Author, AuthorModel>();
+            CreateMap<Book, BookModel>();
+            CreateMap<Category, CategoryModel>();
         }
     }
 }

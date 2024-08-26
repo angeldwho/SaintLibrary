@@ -1,4 +1,4 @@
-﻿namespace MyLibrary.BLL
+﻿namespace MyLibrary.BLL.Models
 {
     public class BookModel
     {

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace MyLibrary.DAL.Entities
+namespace MyLibrary.BLL.Models
 {
     public class AuthorModel
     {

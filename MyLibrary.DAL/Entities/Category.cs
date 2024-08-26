@@ -11,6 +11,6 @@ namespace MyLibrary.DAL.Entities
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<Book> Books { get; set; }
+        public virtual List<Book> Books { get; set; }
     }
 }
