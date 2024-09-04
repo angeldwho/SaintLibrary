@@ -1,4 +1,9 @@
-﻿using MyLibrary.BLL.IServices;
+﻿using AutoMapper;
+using MyLibrary.BLL.IServices;
+using MyLibrary.BLL.Models.Request;
+using MyLibrary.BLL.Models.Request.CreateRequest;
+using MyLibrary.DAL.Entities;
+using MyLibrary.DAL.IRepositories;
 using MyLibrary.DAL.Repositories;
 using System;
 using System.Collections.Generic;
@@ -8,12 +13,10 @@ using System.Threading.Tasks;
 
 namespace MyLibrary.BLL.Services
 {
-    public class AuthorService : IAuthorService
+    public class AuthorService : GenericService<AuthorCreateRequestModel,AuthorRequestModel,Author>,IAuthorService
     {
-        private readonly IAuthorRepository _authorRepository;
-        public AuthorService(IAuthorRepository authorRepository)
+        public AuthorService(IMapper mapper,IGenericRepository<Author> genericRepository) : base(mapper,genericRepository)
         {
-            _authorRepository = authorRepository;
         }
     }
 }

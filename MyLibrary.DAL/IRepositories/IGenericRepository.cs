@@ -8,9 +8,9 @@ namespace MyLibrary.DAL.IRepositories
 {
     public interface IGenericRepository<T> where T : class
     {
-        void Create(T entity);
-        void Update(T entity);
-        void Delete(int id);
+        Task Create(T entity);
+        Task<T> Update(T entity);
+        Task Delete(int id);
         Task<IList<T>> GetAll();
         Task<T> Find(int id);
 

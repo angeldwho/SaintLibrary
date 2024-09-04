@@ -6,6 +6,6 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public virtual Author AuthorId { get; set; }
-        public virtual List<Category> Categories { get; set;}
+        public virtual IList<Category> Categories { get; set;}
     }
 }

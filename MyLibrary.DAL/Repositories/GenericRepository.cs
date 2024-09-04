@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace MyLibrary.DAL.Repositories
 {
-    public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly LibraryContext _libraryContext;
         public GenericRepository(LibraryContext libraryContext)
         {
                 _libraryContext = libraryContext;
         }
-        public async void Create(T entity)
+        public async Task Create(T entity)
         {
             try
             {
@@ -28,19 +28,22 @@ namespace MyLibrary.DAL.Repositories
                 throw new Exception(ex.Message, ex);
             }
         }
-        public async void Update(T entity)
+        public async Task<T> Update(T entity)
         {
             try
             {
-                _libraryContext.Set<T>().Update(entity);
-                await _libraryContext.SaveChangesAsync();
+                 _libraryContext.Set<T>().Update(entity);
+                int affectedRows  = await _libraryContext.SaveChangesAsync();
+                if (affectedRows > 0) { return entity; }
+                throw new Exception("L'aggiornamento non ha avuto successo. Nessuna riga è stata modificata.");
+
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message, ex);
             }
         }
-        public async void Delete(int id)
+        public async Task Delete(int id)
         {
             try
             {
@@ -58,6 +61,7 @@ namespace MyLibrary.DAL.Repositories
             try
             {
                 var result = await _libraryContext.Set<T>().FindAsync(id);
+                Console.WriteLine(result);
                 return result;
             }
             catch(Exception ex)
@@ -71,6 +75,7 @@ namespace MyLibrary.DAL.Repositories
             try
             {
                 var result = await _libraryContext.Set<T>().ToListAsync();
+                Console.WriteLine(result);
                 return result;
             }
             catch(Exception ex)

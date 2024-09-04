@@ -12,6 +12,6 @@ namespace MyLibrary.DAL.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDay {  get; set; }
-        public virtual List<Book> Books { get; set; }
+        public virtual IList<Book> Books { get; set; }
     }
 }

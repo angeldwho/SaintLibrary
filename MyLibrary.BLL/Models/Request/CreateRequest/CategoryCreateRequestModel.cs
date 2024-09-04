@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyLibrary.BLL.Models
+namespace MyLibrary.BLL.Models.Request.CreateRequest
 {
-    public class CategoryModel
+    public class CategoryCreateRequestModel
     {
-        public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }
